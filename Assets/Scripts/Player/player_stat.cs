@@ -20,7 +20,7 @@ public class player_stat : MonoBehaviour {
 	
 	}
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnTriggerEnter2D(Collider2D coll)
     {
         string sColliderTag = coll.gameObject.tag;
 
