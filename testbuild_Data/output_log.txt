@@ -1,0 +1,38 @@
+Mono path[0] = 'D:/My Documents/Unity Projects/New Unity Project/testbuild_Data/Managed'
+Mono path[1] = 'D:/My Documents/Unity Projects/New Unity Project/testbuild_Data/Mono'
+Mono config path = 'D:/My Documents/Unity Projects/New Unity Project/testbuild_Data/Mono/etc'
+PlayerConnection initialized from D:/My Documents/Unity Projects/New Unity Project/testbuild_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55121
+Multi-casting "[IP] 172.30.1.4 [Port] 55121 [Flags] 3 [Guid] 1131403232 [EditorId] 1566486238 [Version] 1048832 [Id] WindowsPlayer(CindyRuby-PC) [Debug] 1" to [225.0.0.222:54997]...
+Waiting for connection from host on [172.30.1.4:55121]...
+PlayerConnection accepted from [172.30.1.4] handle:0x1d0
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,defer=y,address=0.0.0.0:56232
+PlayerConnection already initialized - listening to [172.30.1.4:55121]
+Initialize engine version: 5.1.1f1 (2046fc06d4d8)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 650 (ID=0xfc6)
+    Vendor:   NVIDIA
+    VRAM:     973 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\My Documents\Unity Projects\New Unity Project\testbuild_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\My Documents\Unity Projects\New Unity Project\testbuild_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\My Documents\Unity Projects\New Unity Project\testbuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\My Documents\Unity Projects\New Unity Project\testbuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\My Documents\Unity Projects\New Unity Project\testbuild_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading D:\My Documents\Unity Projects\New Unity Project\testbuild_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: D:\My Documents\Unity Projects\New Unity Project\testbuild_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\My Documents\Unity Projects\New Unity Project\testbuild_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\My Documents\Unity Projects\New Unity Project\testbuild_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\My Documents\Unity Projects\New Unity Project\testbuild_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\My Documents\Unity Projects\New Unity Project\testbuild_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading D:\My Documents\Unity Projects\New Unity Project\testbuild_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  1.169 seconds
+desktop: 1920x1080 60Hz; virtual: 3840x1090 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: D:\My Documents\Unity Projects\New Unity Project\testbuild_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\My Documents\Unity Projects\New Unity Project\testbuild_Data\Managed\System.dll (this message is harmless)
+Waiting for finish
