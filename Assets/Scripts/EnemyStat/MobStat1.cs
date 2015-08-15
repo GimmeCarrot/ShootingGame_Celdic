@@ -21,7 +21,7 @@ public class MobStat1 : MonoBehaviour {
 	
 	}
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnTriggerEnter2D(Collider2D coll)
     {
         string sColliderTag = coll.gameObject.tag;
 
@@ -32,7 +32,7 @@ public class MobStat1 : MonoBehaviour {
             {
                 Destroy(gameObject);
             }
-            
+
             Destroy(coll.gameObject);
         }
         else if (sColliderTag == "Player")
