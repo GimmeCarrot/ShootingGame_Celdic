@@ -2,9 +2,9 @@ Mono path[0] = 'D:/My Documents/Unity Projects/ShootingGame_Celdic/test_usacchi_
 Mono path[1] = 'D:/My Documents/Unity Projects/ShootingGame_Celdic/test_usacchi_Data/Mono'
 Mono config path = 'D:/My Documents/Unity Projects/ShootingGame_Celdic/test_usacchi_Data/Mono/etc'
 PlayerConnection initialized from D:/My Documents/Unity Projects/ShootingGame_Celdic/test_usacchi_Data (debug = 0)
-PlayerConnection initialized network socket : 0.0.0.0 55174
-Multi-casting "[IP] 172.30.1.3 [Port] 55174 [Flags] 2 [Guid] 3251371341 [EditorId] 3714895873 [Version] 1048832 [Id] WindowsPlayer(CindyRuby-PC) [Debug] 0" to [225.0.0.222:54997]...
-PlayerConnection already initialized - listening to [172.30.1.3:55174]
+PlayerConnection initialized network socket : 0.0.0.0 55411
+Multi-casting "[IP] 172.30.1.3 [Port] 55411 [Flags] 2 [Guid] 3656976455 [EditorId] 3714895873 [Version] 1048832 [Id] WindowsPlayer(CindyRuby-PC) [Debug] 0" to [225.0.0.222:54997]...
+PlayerConnection already initialized - listening to [172.30.1.3:55411]
 Initialize engine version: 5.1.1f1 (2046fc06d4d8)
 GfxDevice: creating device client; threaded=1
 Direct3D:
@@ -25,7 +25,7 @@ Platform assembly: D:\My Documents\Unity Projects\ShootingGame_Celdic\test_usacc
 Loading D:\My Documents\Unity Projects\ShootingGame_Celdic\test_usacchi_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: D:\My Documents\Unity Projects\ShootingGame_Celdic\test_usacchi_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
 Loading D:\My Documents\Unity Projects\ShootingGame_Celdic\test_usacchi_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-- Completed reload, in  0.105 seconds
+- Completed reload, in  0.071 seconds
 desktop: 1920x1080 60Hz; virtual: 3840x1090 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -33,10 +33,10 @@ desktop: 1920x1080 60Hz; virtual: 3840x1090 at 0,0
 Platform assembly: D:\My Documents\Unity Projects\ShootingGame_Celdic\test_usacchi_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: D:\My Documents\Unity Projects\ShootingGame_Celdic\test_usacchi_Data\Managed\System.dll (this message is harmless)
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 158.740921 ms
+UnloadTime: 39.992348 ms
 System memory in use before: 13.4 MB.
 System memory in use after: 13.4 MB.
 
 Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 181.
-Total: 0.183803 ms (FindLiveObjects: 0.029545 ms CreateObjectMapping: 0.017105 ms MarkObjects: 0.125645 ms  DeleteObjects: 0.010574 ms)
+Total: 0.235430 ms (FindLiveObjects: 0.026124 ms CreateObjectMapping: 0.018660 ms MarkObjects: 0.176961 ms  DeleteObjects: 0.011818 ms)
 
