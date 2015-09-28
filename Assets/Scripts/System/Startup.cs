@@ -15,7 +15,7 @@ public class Startup : MonoBehaviour {
 
         if (Input.GetKey("space"))
         {
-            Application.LoadLevel( "Stage" );
+            Application.LoadLevel( 1 );
         }
     }
 }
