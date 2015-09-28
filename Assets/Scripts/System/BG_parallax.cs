@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BG_parallax : MonoBehaviour {
 
-    public Vector2 vSpeed = new Vector2(7, 7);
+    public Vector2 vSpeed = new Vector2(3, 3);
     public Vector2 vDirection = new Vector2(0, -1);
 
     public Transform mainCam;
@@ -22,19 +22,15 @@ public class BG_parallax : MonoBehaviour {
         for (int  i = 0;  i < transform.childCount; i++)
         {
             Transform childTransform = transform.GetChild(i);
-
             if (childTransform != null)
             {
+                if (childTransform.GetComponent<Renderer>().IsVisibleFrom(mainCam.GetComponent<Camera>()) == false)
+                {
+                    childTransform.position = new Vector3(0, 8.94f, 10f);
+                }
                 childTransform.Translate(vMovement);
+
             }
         }
-
-        /*
-        if (transform.GetComponent<Renderer>().IsVisibleFrom(mainCam.GetComponent<Camera>()) == false)
-        {
-            Debug.Log("kyayayaya");
-        }
-        */
-
     }
 }
