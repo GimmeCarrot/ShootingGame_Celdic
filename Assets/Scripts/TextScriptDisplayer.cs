@@ -1,79 +1,152 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TextScriptDisplayer : MonoBehaviour {
 
-	public CanvasRenderer textFrame;
-    public CanvasRenderer charNameBox;
-    public CanvasRenderer textBox;
-    public string jsonInput;
+	public GameObject textFrame;
+    public GameObject charNameBox;
+    public GameObject scriptBox;
+    public string scriptInput;
+    public string charListInput;
 
-    private List<DisplayUnit> displayList = new List<DisplayUnit>();
+    private List<ScriptUnit> scriptList = new List<ScriptUnit>();
+    private IEnumerator<ScriptUnit> scriptEnumerator = null;
+    private List<string> charList = new List<string>();
 
-    private class DisplayUnit
+    private bool toNextEnabled = false;
+
+    private class ScriptUnit
     {
-        private int displayMs;
-		private int charIdx;
-		private string text;
+        public int CharIdx
+        {
+            get; private set;
+        }
+        public string Text
+        {
+            get; private set;
+        }
 
-        public DisplayUnit(float _displayMs, float _charIdx, string _text)
+        public ScriptUnit(float _charIdx, string _text)
 		{
-            displayMs = (int)_displayMs;
-            charIdx = (int)_charIdx;
-			text = _text;
+            CharIdx = (int)_charIdx;
+			Text = _text;
 		}
     }
 
-	// Use this for initialization
-	void Start () {
-        JSONObject textJson = new JSONObject(jsonInput);
-        ParseJSON(textJson);
-	}
-
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-    void OnActivate ()
+    void Awake ()
     {
-
+        HideAllUI();
     }
 
-    // GUI 
-    void OnGUI()
+    void OnEnable ()
     {
-		
+        scriptEnumerator = null;
+        JSONObject scriptJson = new JSONObject(scriptInput);
+        ParseScript(scriptJson);
+
+        JSONObject charListJson = new JSONObject(charListInput);
+        ParseCharList(charListJson);
+
+        if (scriptList.Count > 0)
+            ShowAllUI();
+
+        scriptEnumerator = scriptList.GetEnumerator();
+        ShowNextScript();
     }
 
-    private bool IsValidObject(JSONObject obj)
+    void OnDisable ()
     {
-        if (obj.list.Count != 3)
+        toNextEnabled = false;
+        HideAllUI();
+        scriptEnumerator = null;
+    }
+
+    void Update ()
+    {
+        if (toNextEnabled)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                ShowNextScript();
+            }
+        }
+	}
+
+    private void ShowNextScript()
+    {
+        toNextEnabled = false;
+        if (scriptEnumerator.MoveNext())
+        {
+            ScriptUnit scUnit = scriptEnumerator.Current;
+            string charName = charList[scUnit.CharIdx];
+            charNameBox.GetComponent<Text>().text = charName;
+            scriptBox.GetComponent<Text>().text = scUnit.Text;
+            toNextEnabled = true;
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void HideAllUI()
+    {
+        textFrame.SetActive(false);
+        scriptBox.SetActive(false);
+        charNameBox.SetActive(false);
+    }
+
+    private void ShowAllUI()
+    {
+        textFrame.SetActive(true);
+        scriptBox.SetActive(true);
+        charNameBox.SetActive(true);
+    }
+
+    private bool IsValidScript(JSONObject obj)
+    {
+        if (obj.list.Count != 2)
             return false;
 
         return
-            obj.keys[0] == "time" && obj.keys[1] == "char" && obj.keys[2] == "text" &&
+            obj.keys[0] == "char" && obj.keys[1] == "text" &&
             obj.list[0].type == JSONObject.Type.NUMBER &&
-            obj.list[1].type == JSONObject.Type.NUMBER &&
-            obj.list[2].type == JSONObject.Type.STRING;
+            obj.list[1].type == JSONObject.Type.STRING;
     }
 
-    private void ParseJSON(JSONObject obj)
+    private void ParseScript(JSONObject obj)
     {
         switch (obj.type)
         {
             case JSONObject.Type.OBJECT:
-                if (IsValidObject(obj))
+                if (IsValidScript(obj))
                 {
-                    DisplayUnit unit = new DisplayUnit(obj.list[0].n, obj.list[1].n, obj.list[2].str);
-                    displayList.Add(unit);
+                    ScriptUnit unit = new ScriptUnit(obj.list[0].n, obj.list[1].str);
+                    scriptList.Add(unit);
                 }
                 break;
             case JSONObject.Type.ARRAY:
                 foreach (JSONObject subObj in obj.list)
                 {
-                    ParseJSON(subObj);
+                    ParseScript(subObj);
                 }
+                break;
+        }
+    }
+
+    private void ParseCharList(JSONObject obj)
+    {
+        switch (obj.type)
+        {
+            case JSONObject.Type.ARRAY:
+                foreach (JSONObject subObj in obj.list)
+                {
+                    ParseCharList(subObj);
+                }
+                break;
+            case JSONObject.Type.STRING:
+                charList.Add(obj.str);
                 break;
         }
     }
