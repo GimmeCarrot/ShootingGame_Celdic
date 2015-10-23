@@ -37,9 +37,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
---- !u!127 &3
-LevelGameManager:
-  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -68,6 +65,7 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -209,6 +207,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -393,7 +392,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2100869321}
-  - 114: {fileID: 2100869322}
+  - 114: {fileID: 2100869323}
   m_Layer: 0
   m_Name: MobMan
   m_TagString: Untagged
@@ -413,7 +412,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!114 &2100869322
+--- !u!114 &2100869323
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -421,11 +420,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2100869320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4646182753348e441b195d18275055ef, type: 3}
+  m_Script: {fileID: 11500000, guid: b3d2ea0916ff163409d7b833167e614e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 121988, guid: 435142a7ab1760f4abf34a97640f0fba, type: 2}
-  spawnTime: 2
+  m_enemy1: {fileID: 121988, guid: 435142a7ab1760f4abf34a97640f0fba, type: 2}
+  m_boss: {fileID: 150616, guid: bde00d0e86cb51f47a1b534bb8e0b46e, type: 2}
+  m_tSpawnEnemy1: 2
 --- !u!1 &2112820882
 GameObject:
   m_ObjectHideFlags: 0
