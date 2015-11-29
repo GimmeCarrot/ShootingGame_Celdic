@@ -7,8 +7,9 @@ public class TextScriptDisplayer : MonoBehaviour {
 	public GameObject textFrame;
     public GameObject charNameBox;
     public GameObject scriptBox;
-    public string scriptInput;
-    public string charListInput;
+    public TextAsset scriptInput;
+    public TextAsset charListInput;
+    public bool ReloadCharListOnEnable;
 
     private List<ScriptUnit> scriptList = new List<ScriptUnit>();
     private IEnumerator<ScriptUnit> scriptEnumerator = null;
@@ -42,11 +43,14 @@ public class TextScriptDisplayer : MonoBehaviour {
     void OnEnable ()
     {
         scriptEnumerator = null;
-        JSONObject scriptJson = new JSONObject(scriptInput);
+        JSONObject scriptJson = new JSONObject(scriptInput.text);
         ParseScript(scriptJson);
 
-        JSONObject charListJson = new JSONObject(charListInput);
-        ParseCharList(charListJson);
+        if (charList.Count < 1 || ReloadCharListOnEnable)
+        {
+            JSONObject charListJson = new JSONObject(charListInput.text);
+            ParseCharList(charListJson);
+        }
 
         if (scriptList.Count > 0)
             ShowAllUI();
@@ -92,16 +96,22 @@ public class TextScriptDisplayer : MonoBehaviour {
 
     private void HideAllUI()
     {
-        textFrame.SetActive(false);
-        scriptBox.SetActive(false);
-        charNameBox.SetActive(false);
+        if (textFrame != null)
+            textFrame.SetActive(false);
+        if (scriptBox != null)
+            scriptBox.SetActive(false);
+        if (charNameBox != null)
+            charNameBox.SetActive(false);
     }
 
     private void ShowAllUI()
     {
-        textFrame.SetActive(true);
-        scriptBox.SetActive(true);
-        charNameBox.SetActive(true);
+        if (textFrame != null)
+            textFrame.SetActive(true);
+        if (scriptBox != null)
+            scriptBox.SetActive(true);
+        if (charNameBox != null)
+            charNameBox.SetActive(true);
     }
 
     private bool IsValidScript(JSONObject obj)
