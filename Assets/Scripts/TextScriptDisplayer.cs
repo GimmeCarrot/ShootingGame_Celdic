@@ -10,10 +10,14 @@ public class TextScriptDisplayer : MonoBehaviour {
     public TextAsset scriptInput;
     public TextAsset charListInput;
     public bool ReloadCharListOnEnable;
+    public bool UseTypewritingEffect;
+    public float TypeWriteInterval;
+    public int TypeWriteCharCount;
 
     private List<ScriptUnit> scriptList = new List<ScriptUnit>();
     private IEnumerator<ScriptUnit> scriptEnumerator = null;
     private List<string> charList = new List<string>();
+    private TextTypeWriter typeWriter = null;
 
     private bool toNextEnabled = false;
 
@@ -35,9 +39,18 @@ public class TextScriptDisplayer : MonoBehaviour {
 		}
     }
 
+    private Text ScriptBoxText
+    {
+        get
+        {
+            return scriptBox.GetComponent<Text>();
+        }
+    }
+
     void Awake ()
     {
         HideAllUI();
+        typeWriter = new TextTypeWriter();
     }
 
     void OnEnable ()
@@ -72,7 +85,10 @@ public class TextScriptDisplayer : MonoBehaviour {
         {
             if (Input.GetMouseButtonDown(0))
             {
-                ShowNextScript();
+                if (typeWriter != null && !typeWriter.IsWriteOver)
+                    ScriptBoxText.text = typeWriter.FlushAll();
+                else
+                    ShowNextScript();
             }
         }
 	}
@@ -82,16 +98,33 @@ public class TextScriptDisplayer : MonoBehaviour {
         toNextEnabled = false;
         if (scriptEnumerator.MoveNext())
         {
+            if (UseTypewritingEffect)
+            {
+                CancelInvoke("TypeWriteScript");
+                InvokeRepeating("TypeWriteScript", TypeWriteInterval/3, TypeWriteInterval);
+            }
             ScriptUnit scUnit = scriptEnumerator.Current;
             string charName = charList[scUnit.CharIdx];
             charNameBox.GetComponent<Text>().text = charName;
-            scriptBox.GetComponent<Text>().text = scUnit.Text;
+
+            if (UseTypewritingEffect)
+            {
+                typeWriter.Init(scUnit.Text, TypeWriteCharCount);
+            }
+            else
+                ScriptBoxText.text = scUnit.Text;
             toNextEnabled = true;
         }
         else
         {
             gameObject.SetActive(false);
         }
+    }
+
+    private void TypeWriteScript()
+    {
+        if (typeWriter != null && typeWriter.Initialized)
+            ScriptBoxText.text = typeWriter.WriteText();
     }
 
     private void HideAllUI()
