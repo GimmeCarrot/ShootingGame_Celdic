@@ -379,6 +379,9 @@ MonoBehaviour:
   scriptInput: {fileID: 4900000, guid: 046675a90a400ac4b98248ac56bb1564, type: 3}
   charListInput: {fileID: 4900000, guid: 668db8590d4df14448cdee36c2cd3fc1, type: 3}
   ReloadCharListOnEnable: 0
+  UseTypewritingEffect: 1
+  TypeWriteInterval: .200000003
+  TypeWriteCharCount: 2
 --- !u!1 &1504830330
 GameObject:
   m_ObjectHideFlags: 0
