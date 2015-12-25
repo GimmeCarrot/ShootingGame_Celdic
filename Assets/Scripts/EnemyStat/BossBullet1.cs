@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// This is script for Player's normal bullet
-public class player_atk_normal : MonoBehaviour
-{
+public class BossBullet1 : MonoBehaviour {
+
     public float fAtkSpeed;
 
     // Use this for initialization
@@ -15,7 +14,7 @@ public class player_atk_normal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float fMoveSpeed = Time.deltaTime * fAtkSpeed;
+        float fMoveSpeed = Time.deltaTime * fAtkSpeed * (-1);   // -1 multiplied to move down
         transform.Translate(0, fMoveSpeed, 0);
     }
 

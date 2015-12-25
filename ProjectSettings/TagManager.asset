@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerAtk
   - Mob
+  - MobAtk
   layers:
   - Default
   - TransparentFX
