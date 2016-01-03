@@ -50,6 +50,7 @@ public class BossStat1 : MonoBehaviour {
 
         m_Bar_HPRed.fillAmount = m_nHP / (float)NUMBERS.MAX_HP;
 
+        CheckDead();
         CheckPhase();
 
     }
@@ -67,10 +68,6 @@ public class BossStat1 : MonoBehaviour {
 
             // Decrease the Boss's HP
             IncHP(-1);
-            if (m_nHP <= 0)
-            {
-                Destroy(gameObject);
-            }
 
             // Destroy the Player's bullet
             Destroy(coll.gameObject);
@@ -92,6 +89,14 @@ public class BossStat1 : MonoBehaviour {
     void IncCP(int nInc)
     {
         m_nCP += nInc;
+    }
+
+    void CheckDead()
+    {
+        if (m_nHP <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Functions for the Boss's shooting pattern starts from here.

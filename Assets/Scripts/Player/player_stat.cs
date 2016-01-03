@@ -44,6 +44,8 @@ public class player_stat : MonoBehaviour
             m_Bar_CPGreen.fillAmount = 1;
             m_Bar_CPGreen2.fillAmount = (float)(m_nCP - (int)NUMBERS.MID_CP) / (float)NUMBERS.MID_CP;
         }
+
+        CheckDead();
         
     }
 
@@ -51,13 +53,9 @@ public class player_stat : MonoBehaviour
     {
         string sColliderTag = coll.gameObject.tag;
 
-        if (sColliderTag == "Mob")
+        if (sColliderTag == "Mob" || sColliderTag == "MobAtk" )
         {
-            m_nHP -= 1;
-            if (m_nHP <= 0)
-            {
-                Destroy(gameObject);
-            }
+            IncHP(-1);
         }
     }
 
@@ -70,5 +68,13 @@ public class player_stat : MonoBehaviour
     void IncCP(int nInc)
     {
         m_nCP += nInc;
+    }
+
+    void CheckDead()
+    {
+        if (m_nHP <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
