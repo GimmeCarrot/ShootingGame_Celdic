@@ -74,7 +74,7 @@ public class StagePat_1 : MonoBehaviour
 
     void CallBoss()
     {
-        float fBossY = 1;
+        float fBossY = 3;
         Instantiate(m_boss, new Vector3(0, fBossY, 0), Quaternion.identity);
 
         m_nMobAlive = 1;
